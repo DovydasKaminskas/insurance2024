@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class OwnerController extends Controller
 {
     public function create(){
-        return view("create");
+        return view("owners.create");
     }
 
     public function store(Request $request) {
@@ -18,20 +18,18 @@ class OwnerController extends Controller
         $owner->email = $request->email;
         $owner->address = $request->address;
         $owner->save();
-        return redirect()->route('index');
+        return redirect()->route('owner.index');
     }
 
     public function index(){
-        return view('index', [
-
-            'owners' => Owner::all()
-
+        return view('owners.index', [
+            'owners' => Owner::with('cars')->get()
         ]);
     }
 
     public function edit($id){
         $owner = Owner::find($id);
-        return view('edit', [
+        return view('owners.edit', [
 
             'owner' => $owner
 
@@ -46,11 +44,11 @@ class OwnerController extends Controller
         $owner->email = $request->email;
         $owner->address = $request->address;
         $owner->save();
-        return redirect()->route('index');
+        return redirect()->route('owner.index');
     }
 
     public function delete($id){
         Owner::destroy($id);
-        return redirect()->route('index');
+        return redirect()->route('owner.index');
     }
 }
