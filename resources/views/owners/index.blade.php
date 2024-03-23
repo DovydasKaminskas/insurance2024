@@ -6,20 +6,22 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a class="btn btn-success mb-4" href="{{route('owner.create')}}"><i class="fa-solid fa-plus"></i> Create</a>
-            <a class="btn btn-primary mb-4 ms-3" href="{{route('cars.index')}}">Cars</a>
+            <a class="btn btn-success mb-4" href="{{route('owner.create')}}"><i class="fa-solid fa-plus"></i>{{__("Create")}} </a>
+            <a class="btn btn-primary mb-4 ms-3" href="{{route('cars.index')}}">{{__("Cars")}}</a>
+            <h6>{{__("Phone Number:")}}  [[phone]]</h6>
+            <h6>{{__("Email:")}}  [[email]]</h6>
             <table class="table table-hover table-bordered" style="width:100%">
                 <tr class="table-primary">
-                    <th colspan="7" style="text-align:center; border-bottom: 2px solid black;" >OWNERS</th>
+                    <th colspan="7" style="text-align:center; border-bottom: 2px solid black;" >{{__("Owners")}}</th>
                 </tr>
                 <tr class="table-primary">
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Cars</th>
-                    <th>Actions</th>
+                    <th>{{__("Name")}}</th>
+                    <th>{{__("Surname")}}</th>
+                    <th>{{__("Phone")}}</th>
+                    <th>{{__("Email")}}</th>
+                    <th>{{__("Address")}}</th>
+                    <th>{{__("Cars")}}</th>
+                    <th>{{__("Actions")}}</th>
                 </tr>
                 @foreach($owners as $owner)
                 <tr>
@@ -42,6 +44,7 @@
                 </tr>
                 @endforeach
             </table>
+            <h4 style="text-align: center">[[year]]</h4>
         </div>
     </div>
 </div>
