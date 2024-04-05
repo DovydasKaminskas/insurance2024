@@ -28,7 +28,7 @@ Route::middleware('User_Edit_Data')->group(function (){
         Route::post('/owners/store', [OwnerController::class, 'store'])->name('owner.store');
         Route::get('/owners', [OwnerController::class,'index'])->name('owner.index');
         Route::get('/owner/{id}/edit',[OwnerController::class,'edit'])->name('owner.edit');
-        Route::post('/owner/{id}/save',[OwnerController::class,'save'])->name('owner.save');
+        Route::put('/owner/{id}/save',[OwnerController::class,'save'])->name('owner.save');
         Route::get('/owner/{id}/delete', [OwnerController::class, 'delete'])->name('owner.delete');
 
 //Route::resource('owners', OwnerController::class);

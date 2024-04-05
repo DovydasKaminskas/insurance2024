@@ -21,7 +21,22 @@
     "Address": "Adresas",
     "Edit Owner": "Redaguoti savininką",
     "Cars": "Automobiliai",
-    "Brand": "Markė",
-    "Brand": "Markė",
-    "Brand": "Markė"
+    "Registration number is neccessary": "Registracijos numeris yra privalomas",
+    "This registration number already exits": "Toks registracijos numeris jau egzistuoja",
+    "Registration number must match this template: ABC123": "Registracijos numeris turi atitikti šabloną: ABC123",
+    "Brand name is neccessary and must be 2-32 symbols long": "Markės pavadinimas yra privalomas ir turi būti nuo 2 iki 32 simbolių ilgio",
+    "Model name is neccessary and must be 2-32 symbols long": "Modelio pavadinimas yra privalomas ir turi būti nuo 2 iki 32 simbolių ilgio",
+    "Are you sure?": "Ar tikrai norite ištrinti?",
+    "Name is required and must be 2-32 letters long": "Vardas yra privalomas ir turi būti nuo 2 iki 32 raidžių ilgio",
+    "Surname is required and must be 2-32 letters long": "Pavardė yra privaloma ir turi būti nuo 2 iki 32 raidžių ilgio",
+    "Phone is required": "Telefono numeris yra privalomas",
+    "Phone number should not exceed 20 numbers": "Telefono numeris neturi viršyti 20 skaičių",
+    "Phone already exits": "Toks telefono numeris jau egzistuoja",
+    "Phone number should only contain numbers": "Telefono numeris turi būti sudarytas tik iš skaičių",
+    "Email is required": "El. paštas yra privalomas",
+    "Email should not exceed 50 symbols": "El. paštas neturi viršyti 50 simbolių",
+    "Email already exists": "Toks el. paštas jau egzistuoja",
+    "Email should end with @gmail.com": "El. paštas turi baigtis @gmail.com",
+    "Address is required and should not exceed 60 characters": "Adresas yra privalomas ir neturi viršyti 60 simbolių"
+
 }

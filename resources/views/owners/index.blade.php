@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a class="btn btn-success mb-4" href="{{route('owner.create')}}"><i class="fa-solid fa-plus"></i>{{__("Create")}} </a>
+            <a class="btn btn-success mb-4" href="{{route('owner.create')}}"><i class="fa-solid fa-plus"></i> {{__("Create")}} </a>
             <a class="btn btn-primary mb-4 ms-3" href="{{route('cars.index')}}">{{__("Cars")}}</a>
             <h6>{{__("Phone Number:")}}  [[phone]]</h6>
             <h6>{{__("Email:")}}  [[email]]</h6>
@@ -38,7 +38,7 @@
 
                     <td>
                         <a href="{{route('owner.edit', $owner->id)}}"><i style="color:orange" class="fa-regular fa-pen-to-square"></i></a>
-                        <a href="{{route('owner.delete', $owner->id)}}"><i style="color:red" class="fa-solid fa-trash"></i></a>
+                        <a href="{{route('owner.delete', $owner->id)}}" onclick="return confirm('{{__('Are you sure?')}}')"><i style="color:red" class="fa-solid fa-trash"></i></a>
 
                     </td>
                 </tr>

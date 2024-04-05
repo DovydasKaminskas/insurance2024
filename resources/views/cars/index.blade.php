@@ -34,7 +34,7 @@
                             <form method="post" action="{{ route('cars.destroy', $car) }}">
                                 @csrf
                                 @method("delete")
-                                <button class="fa-solid fa-trash" style="color:red; border:none; background:none"></button>
+                                <button class="fa-solid fa-trash" onclick="return confirm('{{__('Are you sure?')}}')" style="color:red; border:none; background:none"></button>
                             </form>
                             </div>
                         </td>

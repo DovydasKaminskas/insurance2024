@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\OwnerRequest;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class OwnerController extends Controller
         return view("owners.create");
     }
 
-    public function store(Request $request) {
+    public function store(OwnerRequest $request) {
         $owner = new Owner();
         $owner->name = $request->name;
         $owner->surname = $request->surname;
@@ -36,7 +37,7 @@ class OwnerController extends Controller
         ]);
     }
 
-    public function save($id, Request $request){
+    public function save($id, OwnerRequest $request){
         $owner = Owner::find($id);
         $owner->name = $request->name;
         $owner->surname = $request->surname;
