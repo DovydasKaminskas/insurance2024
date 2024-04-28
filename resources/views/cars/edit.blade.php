@@ -18,7 +18,7 @@
                     {{__("Edit Car")}}
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('cars.update', $car->id) }}">
+                    <form method="post" action="{{ route('cars.update', $car->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="mb-3">
@@ -51,6 +51,23 @@
                                     @endforeach
                                 @endif
                             </select>
+                        </div>
+                        @if (session('image_paths') !== null)
+                            <div class="mb-3 alert alert-info">
+                                Nuotrauka:
+                                @foreach (session('image_paths') as $image)
+                                    <img src="{{ $image }}" alt="{{$car->image_name}}" style="width:10%">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @endforeach
+                            </div>
+                        @endif
+
+
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Nuotraukos</label>
+                            <input type="file" class="form-control" name="image" >
                         </div>
                         <button class="btn btn-info">{{__("Save")}}</button>
                     </form>

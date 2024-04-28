@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 use App\Http\Requests\CarRequest;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 
 class CarController extends Controller
@@ -70,6 +71,12 @@ class CarController extends Controller
     public function update(CarRequest $request, Car $car)
     {
         $car->update($request->all());
+        if ($request->file('image')!==null){
+            $file=$request->file('image');
+            $file->store('images', 'public');
+            $car->image_file = $car->image_file . ' ' . $file->hashName();
+            $car->image_name = $car->image_name . ' ' . $file->getClientOriginalName();
+        }
         $car->save();
         return redirect()->route('cars.index');
     }
@@ -82,4 +89,30 @@ class CarController extends Controller
         $car->delete();
         return redirect()->route('cars.index');
     }
+    public function image($id) {
+        $car = Car::find($id);
+        //dd($car->image_file);
+        $images = explode(' ', $car->image_file);
+        $paths = array_map(function($image) {
+            return asset('storage/app/public/images/' . $image);
+        }, $images);
+        session(['image_paths' => $paths]);
+        //dd($car->images);
+        return ['car' => $car];
+    }
+
+
+
+    public function imageDelete($id){
+        $car=Car::find($id);
+
+        unlink(storage_path()."app/public/images/".$car->image_file);
+
+        $car->image_file=null;
+        $car->image_name=null;
+        $car->save();
+
+        return redirect()->route('cars.edit',$id);
+    }
+
 }

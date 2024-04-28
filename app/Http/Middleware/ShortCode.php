@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\ShortCode as ShortCodeModel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ShortCode
 {
@@ -17,6 +18,9 @@ class ShortCode
     public function handle(Request $request, Closure $next)
     {
         $response= $next($request);
+        if ($response instanceof BinaryFileResponse) {
+            return $response;
+        }
 
         $content=$response->getContent();
         $short_codes = ShortCodeModel::select('shortcode', 'replace')->get();
