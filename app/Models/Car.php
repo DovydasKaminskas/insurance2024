@@ -9,7 +9,7 @@ class Car extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['reg_number', 'brand', 'model', 'owner_id', 'image_file', 'image_name'];
+    protected $fillable = ['reg_number', 'brand', 'model', 'owner_id', 'image_file', 'image_name', 'user_id'];
 
     public function owner(){
         return $this->belongsTo(Owner::class);

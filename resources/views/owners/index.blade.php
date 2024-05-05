@@ -24,6 +24,7 @@
                     <th>{{__("Actions")}}</th>
                 </tr>
                 @foreach($owners as $owner)
+                    @can('view', $owner)
                 <tr>
                     <td>{{$owner->name}}</td>
                     <td>{{$owner->surname}}</td>
@@ -35,13 +36,16 @@
                             {{$car->brand}} {{$car->model}} <br>
                         @endforeach
                     </td>
-
                     <td>
+                        @can('update', $owner)
                         <a href="{{route('owner.edit', $owner->id)}}"><i style="color:orange" class="fa-regular fa-pen-to-square"></i></a>
+                        @endcan
+                        @can('delete', $owner)
                         <a href="{{route('owner.delete', $owner->id)}}" onclick="return confirm('{{__('Are you sure?')}}')"><i style="color:red" class="fa-solid fa-trash"></i></a>
-
+                        @endcan
                     </td>
                 </tr>
+                    @endcan
                 @endforeach
             </table>
             <h4 style="text-align: center">[[year]]</h4>

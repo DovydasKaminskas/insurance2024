@@ -17,6 +17,7 @@ class CarController extends Controller
     public function __construct()
     {
         $this->middleware('logged_in');
+        $this->authorizeResource(Car::class, 'car');
     }
     public function index()
     {
@@ -40,6 +41,7 @@ class CarController extends Controller
      */
     public function store(CarRequest $request)
     {
+        $this->authorize('create', $car);
         $car=Car::create($request->all());
         $car->save();
         return redirect()->route('cars.index');
@@ -59,6 +61,7 @@ class CarController extends Controller
     public function edit(Car $car)
     {
         $owners = Owner::all();
+        //$this->authorize('update', $car);
         return view('cars.edit', [
             'car'=>$car,
             'owners' => $owners
@@ -70,6 +73,7 @@ class CarController extends Controller
      */
     public function update(CarRequest $request, Car $car)
     {
+        //$this->authorize('update', $car);
         $car->update($request->all());
         if ($request->file('image')!==null){
             $file=$request->file('image');
@@ -86,6 +90,7 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
+        //$this->authorize('delete', $car);
         $car->delete();
         return redirect()->route('cars.index');
     }

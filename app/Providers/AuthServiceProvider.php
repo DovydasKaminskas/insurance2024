@@ -3,6 +3,11 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use App\Models\Car;
+use App\Models\Owner;
+use App\Policies\CarPolicy;
+use App\Policies\OwnerPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        Car::class=>CarPolicy::class,
+        Owner::class=>OwnerPolicy::class,
     ];
 
     /**
@@ -21,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->registerPolicies();
+        Gate::policy(Owner::class, OwnerPolicy::class);
+        Gate::policy(Car::class, CarPolicy::class);
     }
 }

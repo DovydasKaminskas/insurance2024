@@ -22,23 +22,29 @@
                     <th colspan="2">{{__("Actions")}}</th>
                 </tr>
                 @foreach($cars as $car)
+                    @can('view', $car)
                     <tr>
                         <td>{{$car->reg_number}}</td>
                         <td>{{$car->brand}}</td>
                         <td>{{$car->model}}</td>
                         <td>{{$car->owner->name ?? ''}} {{$car->owner->surname ?? ''}}</td>
                         <td>
+                            @can('update', $car)
                             <a href="{{route('cars.edit', $car->id)}}"><i style="color:orange" class="fa-regular fa-pen-to-square"></i></a>
+                            @endcan
                         </td>
                         <td>
+                            @can('delete', $car)
                             <form method="post" action="{{ route('cars.destroy', $car) }}">
                                 @csrf
                                 @method("delete")
                                 <button class="fa-solid fa-trash" onclick="return confirm('{{__('Are you sure?')}}')" style="color:red; border:none; background:none"></button>
                             </form>
+                            @endcan
                             </div>
                         </td>
                 </tr>
+                    @endcan
                 @endforeach
             </table>
             <h4 style="text-align: center">[[year]]</h4>
